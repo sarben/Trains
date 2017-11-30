@@ -1,0 +1,103 @@
+1.  Define the function of a constructor. [2]
+    The function of a constructor is called to create an object and usually accepts arguments that are set as member variables.
+
+2. Outline the advantages of polymorphism, using the RollingStock class as an example. [3]
+    Inheritance is used in the RollingStock class because it makes it easier to construct instances of RollingStock(such as Engine and Wagon) that inherit from the RollingStock class.
+
+4. Construct a method getNumberOfWagons(), part of the Train class, that returns the
+number of wagons currently coupled to the train. [2]
+
+5. Construct the removeWagon() method that will remove one wagon from a train and
+return the removed object. Include appropriate error checking. [5]
+
+6. Outline one advantage of using standard library collections. [2]
+    Java collections framework allows us to implement reusable data structures like the remove function in the Train class.
+
+7. Describe two ways in which programming by a team differs from programming by an
+individual working alone. [4]
+    1.) Programmers can be specialized on different parts and know little of other parts
+    2.) It's easier to resolve problems with more team members
+
+The following code implements the Parcel class used in the delivery company’s program.
+
+public class Parcel{
+private int trackingID;
+private double weight;
+public String destinationAddress;
+public String originAddress;
+
+public Parcel(int ID) {
+trackingID = ID;
+weight = 0;
+}
+public void setWeight(double newWeight) { weight = newWeight; }
+public double getWeight() { return weight; }
+}
+
+The origin and destination addresses are stored in a Parcel object as simple strings. However,
+addresses are complex and there are a lot of different pieces of information that may or may not
+be present such as a first name or a business name, in addition to house number, street name,
+city and country.
+
+It has been decided to create a new Address class to handle this information.
+
+8.  State the appropriate data type to be used in the Address class to store
+(i) the street name; [1]
+    String
+(ii) the building number; [1]
+    Int
+(iii) an indication of whether or not this is a business address. [1]
+    Boolean
+9. Identify the changes to the Parcel class that will be needed to make use of the new
+Address class. [3]
+    public String street;
+    public int buildingNumber;
+    public boolean business;
+
+Separate OriginAddress and DestinationAddress classes will be created. The destination
+address may contain special instructions to the delivery person. The origin address contains a
+variable that indicates if the parcel was collected from the customer’s house or from the local
+post office.
+
+10. Outline how these two new classes can be created with minimal duplication of code. [3]
+    Make variables global (boolean collected and string specialInstructions) so that they can be accessed from outside methods and create OriginAddress and DestinationAddress to extend the Address class.
+
+11. Consider the following code fragment.
+
+Train A = new Train(123);
+Engine B = new Engine(7);
+A.addEngine(B);
+Wagon C = new Wagon(23);
+A.addWagon(C);
+Wagon D = new Wagon(66);
+A.addWagon(D);
+Wagon E = new Wagon(71);
+A.addWagon(E);
+A.addEngine(new Engine(9));
+
+(i) Draw the mEngines array after the code fragment has been executed. [2]
+    [B,Engine(9)]
+(ii) State the value of mEngineCount after the code fragment has been executed. [1]
+    2
+(iii) Draw the mWagons array after both the code fragment above and the code fragment
+below have been executed. [2]
+    [c,d,Wagon(214)]
+
+Wagon F = A.removeWagon();
+F = A.removeWagon();
+A.addWagon(new Wagon(214));
+
+The parcels loaded into a wagon cannot weigh more than the capacity of the wagon. A train’s
+engines must have enough combined power to pull the loaded wagons. The company needs to
+be able to check that these requirements are being met.
+
+12. Construct the getWeight() method in the Wagon class that returns the total combined
+weight of the parcels currently in the wagon and the wagon itself. [4]
+
+13. Construct the getWeight() method in the Train class that returns the total combined
+weight of all the parcels, engines and wagons in a train. [4]
+
+14. Explain why having a getWeight() method in both the Train and Wagon classes
+does not cause a compiler error, even though the Train class does not inherit from the
+RollingStock class. [2]
+    The Train class and Wagon class are different entities and are therefore allowed to have the same methods without causing a compiler error.
